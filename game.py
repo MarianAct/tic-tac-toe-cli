@@ -2,39 +2,20 @@ import random
 import re
 
 players = {
-    0: {
-        'name': 'Player0',
-        'turn': 0,
-        'dice': 0,
-        'symbol': ''
-    },
-    1: {
-        'name': 'Player1',
-        'turn': 0,
-        'dice': 0,
-        'symbol': ''
-    }
+    0: {'name': '', 'turn': 0, 'dice': 0, 'symbol': ''},
+    1: {'name': '', 'turn': 0, 'dice': 0, 'symbol': ''}
 }
 
 print("[INFO]: Welcome to the X and O game!")
 
-player_first = None
-while player_first is None:
-    input_value = str(input(f"[GAME]: Enter first player name: "))
-    if len(input_value) <= 2:
-        print('[INFO]: Value must contains more the 2 characters, please try again.')
-    else:
-        player_first = input_value
-players[0]['name'] = player_first
-
-player_second = None
-while player_second is None:
-    input_value = str(input(f"[GAME]: Enter second player name: "))
-    if len(input_value) <= 2:
-        print('[INFO]: Value must contains more the 2 characters, please try again.')
-    else:
-        player_second = input_value
-players[1]['name'] = player_second
+for player_num in range(2):
+    while True:
+        input_value = input(f"[GAME]: Enter player {player_num + 1} name: ")
+        if len(input_value) <= 2:
+            print('[INFO]: Value must contain more than 2 characters, please try again.')
+        else:
+            players[player_num]['name'] = input_value
+            break
 
 print(f"[INFO]: Hello {players[0]['name']} and {players[1]['name']}. Good Luck!")
 print("[INFO]: Let's start dice to see how is starting first.")
